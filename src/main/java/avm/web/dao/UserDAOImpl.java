@@ -9,7 +9,7 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Component
-@Transactional
+@Transactional(readOnly = true)
 public class UserDAOImpl implements UserDAO {
 
     @PersistenceContext
@@ -21,11 +21,13 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
+    @Transactional
     public void saveUser(Person user) {
         entityManager.persist(user);
     }
 
     @Override
+    @Transactional
     public void updateUser(Person user, int id) {
         Person userToBeUpdate = getUserById(id);
         userToBeUpdate.setName(user.getName());
@@ -35,6 +37,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
+    @Transactional
     public void removeUser(int id) {
         entityManager.remove(entityManager.contains(getUserById(id)) ? getUserById(id) : entityManager.merge(getUserById(id)));
     }

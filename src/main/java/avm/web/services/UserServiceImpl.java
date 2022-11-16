@@ -3,12 +3,10 @@ package avm.web.services;
 import avm.web.dao.UserDAO;
 import avm.web.models.Person;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
-@Transactional
 public class UserServiceImpl implements UserService {
 
     private final UserDAO userDAO;
