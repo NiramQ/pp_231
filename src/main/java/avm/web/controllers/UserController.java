@@ -23,13 +23,13 @@ public class UserController {
     }
 
     @GetMapping("new")
-    public String saveNewPerson(Model model) {
+    public String getNewPerson(Model model) {
         model.addAttribute("user", new Person());
         return "new";
     }
 
     @PostMapping("new")
-    public String saveNewPerson(@ModelAttribute("user") Person user) {
+    public String setNewPerson(@ModelAttribute("user") Person user) {
         userService.saveUser(user);
         return "redirect:/";
     }
